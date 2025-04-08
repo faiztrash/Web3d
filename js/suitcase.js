@@ -1,4 +1,3 @@
-// travel-gear.js
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 500, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -7,7 +6,7 @@ document.getElementById('modelViewer').appendChild(renderer.domElement);
 
 scene.background = new THREE.Color(0xf0f0f0);
 
-// All-round Lighting
+//Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambientLight);
 
@@ -37,20 +36,20 @@ loader.load('models/Suitcase.glb', function (gltf) {
   const box = new THREE.Box3().setFromObject(suitcaseModel);
   const center = box.getCenter(new THREE.Vector3());
 
-  // Center and shift model for visual centering
+  //Model position
   suitcaseModel.position.sub(center);
-  suitcaseModel.position.x -= 6; // shift model further left in viewer
+  suitcaseModel.position.x -= 6;
 
-  // Add model to scene
+
   scene.add(suitcaseModel);
 
-  // Adjust camera and controls
-  controls.target.set(0, 0, 0); // match target to model shift
+  //camera settings
+  controls.target.set(-6, 0, 0);
   controls.update();
   camera.position.set(0, 2, 5);
-  camera.lookAt(0, 0, 0);
+  camera.lookAt(-6, 0, 0);
 
-  // Animation setup
+  // Animation
   if (gltf.animations && gltf.animations.length) {
     mixer = new THREE.AnimationMixer(suitcaseModel);
     action = mixer.clipAction(gltf.animations[0]);
