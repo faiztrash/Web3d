@@ -10,10 +10,9 @@ container.appendChild(renderer.domElement);
 
 scene.background = new THREE.Color(0xf0f0f0);
 
-//Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambientLight);
-
+// Add a directional light to simulate sunlight
 const lights = [
   [5, 10, 7.5], [-5, 10, -7.5], [0, 10, 0], [0, -10, 0], [10, 0, 0], [-10, 0, 0]
 ];
@@ -22,24 +21,66 @@ lights.forEach(pos => {
   light.position.set(...pos);
   scene.add(light);
 });
-
+// Add a hemisphere light to simulate ambient light
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.update();
 
 const loader = new THREE.GLTFLoader();
 let currentModel;
+let wireframeEnabled = false;
+const wireframes = [];
+// Add a button to toggle wireframe mode
+function applyWireframes(object) {
+  object.traverse(function (child) {
+    if (child.isMesh) {
+      const wireframeMaterial = new THREE.MeshBasicMaterial({
+        color: 0x000000,
+        wireframe: true
+      });
+      const wireframe = new THREE.Mesh(child.geometry, wireframeMaterial);
+      wireframe.position.copy(child.position);
+      wireframe.rotation.copy(child.rotation);
+      wireframe.scale.copy(child.scale);
+      child.add(wireframe);
+      wireframes.push(wireframe);
+    }
+  });
+}
+
+function removeWireframes() {
+  wireframes.forEach(wf => {
+    if (wf.parent) {
+      wf.parent.remove(wf);
+    }
+  });
+  wireframes.length = 0;
+}
+// Add event listeners to the buttons
+document.getElementById('toggleWireframe').addEventListener('click', () => {
+  if (currentModel) {
+    currentModel.traverse((child) => {
+      if (child.isMesh && child.material) {
+        child.material.wireframe = !wireframeEnabled;
+      }
+    });
+    wireframeEnabled = !wireframeEnabled;
+  }
+});
+
 
 function loadModel(path) {
   if (currentModel) {
     scene.remove(currentModel);
+    currentModel = null;
+    removeWireframes();
+    wireframeEnabled = false;
   }
 
   loader.load(path, function (gltf) {
     currentModel = gltf.scene;
     currentModel.scale.set(1, 1, 1);
 
-    //Rotate Cool Ranch to match front-facing orientation
     if (path.includes("Cool ranch.glb") || path.includes("Cool%20ranch.glb")) {
       currentModel.rotation.y = Math.PI;
     }
@@ -51,7 +92,6 @@ function loadModel(path) {
     currentModel.position.sub(center);
     scene.add(currentModel);
 
-    //Adjust camera position
     const maxDim = Math.max(size.x, size.y, size.z);
     const fov = camera.fov * (Math.PI / 180);
     let cameraZ = Math.abs(maxDim / Math.sin(fov / 2));
@@ -67,11 +107,12 @@ function loadModel(path) {
   });
 }
 
-
 function resetModel() {
   if (currentModel) {
     scene.remove(currentModel);
+    removeWireframes();
     currentModel = null;
+    wireframeEnabled = false;
   }
 }
 

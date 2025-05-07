@@ -15,7 +15,9 @@
     }
   </style>
 </head>
+
 <body>
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">Travel Guide</a>
@@ -33,7 +35,7 @@
       </div>
     </div>
   </nav>
-
+  <!-- Main Content -->
   <div class="container text-center mt-5">
     <h1 class="mb-3">Travel Snacks</h1>
     <p>Cycle through different 3D Doritos flavours using the buttons below.</p>
@@ -42,11 +44,12 @@
       <div id="snackViewer" class="w-100" style="max-width: 900px;"></div>
     </div>
     
-
+    <!-- Snack Model Viewer -->
     <div class="btn-group mt-3" role="group">
       <button class="btn btn-warning" onclick="loadModel('models/Doritos.glb')">Nacho Cheese</button>
       <button class="btn btn-primary" onclick="loadModel('models/Cool ranch.glb')">Cool Ranch</button>
       <button class="btn btn-danger" onclick="loadModel('models/chilli heatwave.glb')">Chilli Heatwave</button>
+      <button id="toggleWireframe" class="btn btn-dark">Toggle Wireframe</button>
       <button class="btn btn-secondary" onclick="resetModel()">Reset</button>
     </div>
   </div>

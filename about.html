@@ -1,27 +1,73 @@
-<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>About</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">Travel Gear Explorer</a>
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="travel-gear.html">Travel Gear</a></li>
-        <li class="nav-item"><a class="nav-link" href="boarding-pass.html">Boarding Pass</a></li>
-        <li class="nav-item"><a class="nav-link" href="snacks.html">Snacks</a></li>
-        <li class="nav-item"><a class="nav-link" href="info.html">Travel Info</a></li>
-      </ul>
+      <a class="navbar-brand" href="index.html">Travel Guide</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="travel-gear.html">Luggage</a></li>
+          <li class="nav-item"><a class="nav-link" href="boarding-pass.html">Boarding Pass</a></li>
+          <li class="nav-item"><a class="nav-link" href="snacks.html">Snacks</a></li>
+          <li class="nav-item"><a class="nav-link" href="info.html">Travel Info</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">About</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
-  <div class="container mt-5">
-    <h2>Credits & Statement</h2>
-    <p>This project was created for the Web 3D Applications module. All models, code, and assets were created by [Your Name], unless otherwise stated.</p>
-    <p>Technologies used: HTML5, CSS3, JavaScript, X3DOM, AJAX, JSON, and Blender for modeling.</p>
+
+  <!-- Main Content -->
+  <div class="container text-center mt-5">
+    <h1 class="mb-3">About This Project</h1>
+    <p>This website was created for the <strong>Web 3D Applications</strong> module.</p>
+    <p>All models, code, and assets were created by Faiz Syed</p>
+    <p>Technologies used include: HTML5, CSS3, JavaScript, Three.js, GLTFLoader, and Blender.</p>
   </div>
+
+  <div class="container text-center mt-5">
+    <h2 class="mb-3">About</h2>
+    <p>For my website, I decided to create a website that showcases the process of travelling for people that never travelled before. It is to help them understand and visuallise what the process might look like to cool the nerves of first time fliers.</p>
+  </div>
+
+  <div class="container text-center mt-5">
+    <h2 class="mb-3">3D Models</h2>
+    <p>All models were made by myself using Blender. I made 5 different models, a suitcase, a boarding pass and 3 versions of crisps. Below is a screenshot of how I developed my suitcase model. There is an animation that pulls the handle up and down allowing you to do both.</p>
+    <img src="images/Screenshot 2025-05-07 113435.png" alt="3D Models" class="img-fluid rounded my-3" style="max-width: 600px;">
+    <p>For the process of making 3 switchable models for the crisps, I had to get 3 different versions of textures for the crisps. I added them using the UV Editor.</p>
+    <img src="images/Screenshot 2025-05-07 113704.png" alt="3D Models" class="img-fluid rounded my-3" style="max-width: 600px;">
+  </div>
+
+  <div class="container text-center mt-5">
+    <h2 class="mb-3">Design</h2>
+    <p>For the website, I used bootstrap to contain the models. That way, I am able to create a professional webspace for viewers to browse the website with ease. In addition, I also used bootstrap to create the navbar allowing for more a professional feel when navigating through the website. I used three.js to add light to my scene and create a spot light that will allow users to see the can in high definition. Using GLTFLoader and Java script, I was able to integrate my model for users to enjoy as well as adding interactivity to the models.</p>
+  </div>
+
+  <div class="container text-center mt-5">
+    <h2 class="mb-3">Integration</h2>
+    <p>I was able to integrate a range of models into my website as well as provide a range of images, texts and animations that will help the user understand what is going on in the website. </p>
+  </div>
+
+  <div class="container text-center mt-5">
+    <h2 class="mb-3">Testing</h2>
+    <p>During Lab 11, I was able to test my websites features with my peers to see how well my models worked and what was missing. This process helped me as I was able to find a lot of bugs in my code and found features I could have added.</p>
+  </div>
+
+  
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    © 2025 Travel Guide. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

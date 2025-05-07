@@ -28,6 +28,7 @@ const loader = new THREE.GLTFLoader();
 let suitcaseModel;
 let mixer;
 let action;
+let wireframeEnabled = false;
 
 loader.load('models/Suitcase.glb', function (gltf) {
   suitcaseModel = gltf.scene;
@@ -84,3 +85,14 @@ function animate() {
   renderer.render(scene, camera);
 }
 animate();
+
+document.getElementById('toggleWireframe').addEventListener('click', () => {
+  if (suitcaseModel) {
+    suitcaseModel.traverse((child) => {
+      if (child.isMesh && child.material) {
+        child.material.wireframe = !wireframeEnabled;
+      }
+    });
+    wireframeEnabled = !wireframeEnabled;
+  }
+});

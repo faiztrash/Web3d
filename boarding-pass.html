@@ -15,6 +15,7 @@
   </style>
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">Travel Guide</a>
@@ -33,16 +34,21 @@
     </div>
   </nav>
 
-
+  <!-- Main Content -->
   <div class="container text-center mt-5">
     <h1 class="mb-3">3D Boarding Pass</h1>
     <p>View your digital boarding pass in 3D below.</p>
-
+    
+    <!-- Boarding Pass Model Viewer -->
     <div class="d-flex justify-content-center">
       <div id="modelViewer" class="text-center mt-4 bg-light"></div>
     </div>
   </div>
 
+  <div class="text-center mt-4">
+    <button id="toggleWireframe" class="btn btn-outline-dark">Toggle Wireframe</button>
+  </div>
+  
   <footer class="bg-dark text-white text-center py-3 mt-5">
     &copy; 2025 Travel Guide. All rights reserved.
   </footer>
